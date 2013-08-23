@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entry</key>
+	<dict>
+		<key>cell</key>
+		<string>PSLinkCell</string>
+		<key>icon</key>
+		<string>GTrendsWidget.png</string>
+		<key>label</key>
+		<string>GTrends Widget</string>
+	</dict>
+	<key>title</key>
+	<string>GTrends Widget</string>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>When &quot;Force Reloading&quot; is set to OFF, this widget uses the last cashed data (if exists) to prevent battery drain. Data can be updated manually by holding down on a ticker word.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<string>0</string>
+			<key>defaults</key>
+			<string>jp.tom-go.GTrendsWidget</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>gTrendsURL</string>
+			<key>label</key>
+			<string>Country / Region</string>
+			<key>validTitles</key>
+			<array>
+				<string>Australia</string>
+				<string>Canada</string>
+				<string>Germany</string>
+				<string>Hong Kong</string>
+				<string>India</string>
+				<string>Israel</string>
+				<string>Japan</string>
+				<string>Russia</string>
+				<string>Singapore</string>
+				<string>Taiwan</string>
+				<string>United Kingdom</string>
+				<string>United States</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p8</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p13</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p15</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p10</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p3</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p6</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p4</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p14</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p5</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p12</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p9</string>
+				<string>http://www.google.com/trends/hottrends/atom/feed?pn=p1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>jp.tom-go.GTrendsWidget</string>
+			<key>key</key>
+			<string>forceReloading</string>
+			<key>label</key>
+			<string>Force Reloading</string>
+			<key>forceReloading</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+			<key>footerText</key>
+			<string>You can customize a search query for a ticker word you tap. Type in your favorite search URL with a text string &quot;__QUERY__&quot; which will be automatically replaced with the tapped ticker word.
+
+(e.g.) http://www.foo.com/search?q=__QUERY__
+		=&gt; http://www.foo.com/search?q=xxxxxxxxxxxx
+
+2012-2013 tom-go</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>jp.tom-go.GTrendsWidget</string>
+			<key>key</key>
+			<string>useCustomQuery</string>
+			<key>label</key>
+			<string>Use Custom Query</string>
+			<key>useCustomQuery</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextViewCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>height</key>
+			<integer>110</integer>
+			<key>isURL</key>
+			<true/>
+			<key>defaults</key>
+			<string>jp.tom-go.GTrendsWidget</string>
+			<key>default</key>
+			<string>http://m.yahoo.com/apple/onesearch?p=__QUERY__</string>
+			<key>key</key>
+			<string>customQuery</string>
+			<key>label</key>
+			<string>Custom Query</string>
+			<key>placeholder</key>
+			<string></string>
+		</dict>
+	</array>
+</dict>
+</plist>

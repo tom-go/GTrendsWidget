@@ -1,0 +1,11 @@
+*.swp
+._*
+*.deb
+.debmake
+_
+Backups/
+obj/
+Release/
+theos
+.theos
+.DS_Store

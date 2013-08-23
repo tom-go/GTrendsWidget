@@ -1,0 +1,9 @@
+#!/bin/sh
+
+FILE="/var/mobile/Documents/GTrendsWidget.plist";
+
+if [ -f ${FILE} ]; then
+    rm -f ${FILE};
+fi;
+
+exit 0;
