@@ -8,7 +8,7 @@
 #define UP_ARROW_IMG		@"/System/Library/WeeAppPlugins/StocksWeeApp.bundle/UpChangeArrow.png"
 #define DOWN_ARROW_IMG		@"/System/Library/WeeAppPlugins/StocksWeeApp.bundle/DownChangeArrow.png"
 #define PREFPATH			@"/var/mobile/Library/Preferences/jp.tom-go.GTrendsWidget.plist"
-#define CACHEPATH			@"/var/mobile/Documents/GTrendsWidget.plist"
+#define CACHEPATH			@"/var/mobile/Documents/.GTrendsWidget.plist"
 #define MSG_LOADING 		@"Loading..."
 #define MSG_OFFLINE 		@"Google Trends Offline"
 #define MSG_ERROR_LOADING	@"Data Loading Error ;-("
