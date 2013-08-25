@@ -33,5 +33,7 @@
 	<string>GTrendsWidgetController</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleIconFile</key>
+	<string>GTrendsWidget.png</string>
 </dict>
 </plist>
