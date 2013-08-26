@@ -5,10 +5,10 @@
 
 @implementation TrendsInfoView
 - (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	if( self ) {
-	}
-	return self;
+    self = [super initWithFrame:frame];
+    if( self ) {
+    }
+    return self;
 }
 
 - (void)dealloc {

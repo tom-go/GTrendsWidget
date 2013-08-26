@@ -9,7 +9,7 @@
 @end
 
 @interface TrendsData : NSObject <NSURLConnectionDelegate, NSXMLParserDelegate>
-@property(nonatomic, copy) NSString *trendsURL;
+@property(nonatomic, copy)   NSString *trendsURL;
 @property(nonatomic, retain) NSMutableArray *trends;
 @property(nonatomic, assign) BOOL hasCachedRanking;
 @property(nonatomic, assign) BOOL rankingUpdated;
