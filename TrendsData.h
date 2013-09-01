@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 #import "common.h"
 
 @protocol TrendsDataDelegate

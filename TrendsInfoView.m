@@ -69,6 +69,7 @@
             CGRect typeObjectFrame = [typeObject frame];
             typeObjectFrame.origin.x += CGRectGetWidth(infoLabel.frame) + margin;
             [typeObject setFrame:typeObjectFrame];
+
             [typeObject addTarget:self action:@selector(infoButtonPressed) forControlEvents:UIControlEventTouchUpInside];
         }
 
@@ -82,7 +83,6 @@
     [containerView setFrame:containerFrame];
 
     containerView.backgroundColor = [UIColor clearColor];
-    containerView.tag = TAG_INFO_VIEW;
     [containerView addSubview:infoLabel];
     [infoLabel release];
 
@@ -93,6 +93,7 @@
 #pragma mark -
 #pragma mark UIButton Callback
 - (void)infoButtonPressed {
+
     self.alertView = [[[UIAlertView alloc] init] autorelease];
     self.alertView.delegate = self;
     self.alertView.title = MSG_ERROR_LOADING;

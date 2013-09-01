@@ -9,7 +9,7 @@
 
 static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
 
-@interface GTrendsWidgetController: NSObject <BBWeeAppController, TrendsDataDelegate>
+@interface GTrendsWidgetController: NSObject <BBWeeAppController, TrendsDataDelegate, UIGestureRecognizerDelegate>
 @property(nonatomic, retain) UIView *view;
 @property(nonatomic, assign) CGFloat viewWidth;
 @end
@@ -94,6 +94,7 @@ static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
         [backgroundView release];
 
         UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(reloadRanking:)];
+        longPressGesture.delegate = (id)self;
         [_view addGestureRecognizer:longPressGesture];
         [longPressGesture release];
     }
@@ -140,10 +141,10 @@ static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
     infoView.info = info;
     infoView.infoType = type;
     infoView.feedURL = self.feedURL;
+    infoView.tag = TAG_INFO_VIEW;
     [infoView tile];
 
     [_view addSubview:infoView];
-    [_view bringSubviewToFront:[_view viewWithTag:TAG_INFO_VIEW]];
     [infoView release];
 }
 
@@ -273,5 +274,20 @@ static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
     self.nowLoading = NO;
 }
 
+#pragma mark -
+#pragma mark UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+
+    if (touch.view != gestureRecognizer.view && [touch.view isKindOfClass:[UIButton class]]) {
+        if( [[[UIDevice currentDevice] systemVersion] floatValue] < 6.0 ) {
+            // Fix me : Emulating UIControlEvent if iOS version is under 6.0.
+            // Could not fire the action method of infoButton(UIButton) on infoView without following code.
+            [(UIButton *)touch.view sendActionsForControlEvents:UIControlEventTouchUpInside];
+
+            return NO;
+        }
+    }
+    return YES;
+}
 
 @end

@@ -11,13 +11,19 @@
 @implementation InfiniteScrollView
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        self.contentSize = CGSizeMake(5000, frame.size.height);
 
+        self.contentSize = CGSizeMake(5000, frame.size.height);
         _visibleItems = [[NSMutableArray alloc] init];
         _itemContainerView = [[UIView alloc] init];
         _itemContainerView.frame = (CGRect){CGPointZero, {self.contentSize.width, self.frame.size.height}};
+        _itemContainerView.userInteractionEnabled= NO;
+
         [self addSubview:_itemContainerView];
         [self setShowsHorizontalScrollIndicator:NO];
+        
+        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(launchURL)];
+        [self addGestureRecognizer:tapGesture];
+        [tapGesture release];
     }
     return self;
 }
@@ -145,7 +151,6 @@
     }
 
     arrowView = [[UIImageView alloc] init];
-    [arrowView setUserInteractionEnabled:NO];
     arrowView.contentMode = UIViewContentModeScaleAspectFit;
     if(arrowImage) {
         arrowFrame = CGRectMake(0, 0, prevRankSize.height, prevRankSize.height);
@@ -194,6 +199,8 @@
     [arrowView release];
     [prevRankLabel release];
     [itemView release];
+
+
 
     return [[_itemContainerView subviews] lastObject];
 }
@@ -324,7 +331,8 @@
     return view;
 }
 
--(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+- (void)launchURL {
+
     NSString *urlString = nil;
     NSMutableDictionary *itemDict = [self.trendsData.trends objectAtIndex:_touchedItemIndex];
 
