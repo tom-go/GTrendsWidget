@@ -72,6 +72,7 @@ static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
 }
 
 - (void)removeSubviews {
+    [self invalidateDisplayLink];
     [[_view viewWithTag:TAG_SCROLL_VIEW] removeFromSuperview];
     [[_view viewWithTag:TAG_INFO_VIEW] removeFromSuperview];
 }
@@ -116,9 +117,6 @@ static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
 }
 
 - (void)updateTrends:(BOOL)forceReleoading {
-
-    [self invalidateDisplayLink];
-
     self.trendsData = [[[TrendsData alloc] init] autorelease];
     self.trendsData.delegate = self;
     self.trendsData.trendsURL = self.feedURL;
@@ -165,14 +163,14 @@ static NSBundle *_GTrendsWidgetWeeAppBundle = nil;
 
 - (void)invalidateDisplayLink {
     InfiniteScrollView *scrollView = (InfiniteScrollView *)[_view viewWithTag:TAG_SCROLL_VIEW];
-    [scrollView stopAutoScroll];
-    [scrollView.tickerDisplayLink invalidate];
-    scrollView.tickerDisplayLink = nil;
+    [scrollView destroyDisplayLink];
 }
 
 - (void)unloadView {
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_reachability stopNotifier];
+    
     [self invalidateDisplayLink];
 
     RELEASE_SAFELY(_reachability);

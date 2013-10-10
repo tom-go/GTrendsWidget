@@ -24,16 +24,13 @@
         UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(launchURL)];
         [self addGestureRecognizer:tapGesture];
         [tapGesture release];
+
+        [self destroyDisplayLink];
     }
     return self;
 }
 
 - (void)dealloc {
-
-    [self stopAutoScroll];
-    [_tickerDisplayLink invalidate];
-    _tickerDisplayLink = nil;
-
     [_useCustomQuery release];
     [_customQuery release];
     [_trendsData release];
@@ -200,8 +197,6 @@
     [prevRankLabel release];
     [itemView release];
 
-
-
     return [[_itemContainerView subviews] lastObject];
 }
 
@@ -286,15 +281,20 @@
 #pragma mark -
 #pragma mark auto scroll management
 - (void)startAutoScroll {
-    if(!self.tickerDisplayLink) {
+    if(!_tickerDisplayLink) {
         self.tickerDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timerDidFire:)];
-        [self.tickerDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+        [_tickerDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }
-    self.tickerDisplayLink.paused = NO;
+    _tickerDisplayLink.paused = NO;
 }
 
 - (void)stopAutoScroll {
     _tickerDisplayLink.paused = YES;
+}
+
+- (void)destroyDisplayLink {
+    [_tickerDisplayLink invalidate];
+    _tickerDisplayLink = nil;
 }
 
 #pragma mark -

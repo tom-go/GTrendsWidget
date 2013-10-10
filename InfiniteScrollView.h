@@ -5,7 +5,8 @@
 @property(nonatomic, copy)   NSString *useCustomQuery;
 @property(nonatomic, retain) NSMutableString *customQuery;
 @property(nonatomic, retain) TrendsData *trendsData;
-@property(nonatomic, retain) CADisplayLink *tickerDisplayLink;
+@property(nonatomic, assign) CADisplayLink *tickerDisplayLink;
 - (void)stopAutoScroll;
 - (void)startAutoScroll;
+- (void)destroyDisplayLink;
 @end
